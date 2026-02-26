@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNIC Locker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>UNIC Locker</h1>
+      <p>Your secure document locker with a unique UNIC ID.</p>
+    </header>
+
+    <main>
+      <section id="registerSection" class="card">
+        <h2>Create Account</h2>
+        <form id="registerForm">
+          <div class="grid">
+            <label>
+              Full Name
+              <input type="text" id="fullName" required />
+            </label>
+            <label>
+              Date of Birth
+              <input type="date" id="dob" required />
+            </label>
+            <label>
+              Email
+              <input type="email" id="email" required />
+            </label>
+            <label>
+              Phone Number
+              <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10 digit mobile" required />
+            </label>
+            <label>
+              OTP
+              <input type="text" id="otp" pattern="[0-9]{6}" placeholder="Enter 6-digit OTP" required />
+            </label>
+            <label>
+              Address
+              <input type="text" id="address" required />
+            </label>
+            <label>
+              Create Password
+              <input type="password" id="registerPassword" minlength="6" required />
+            </label>
+          </div>
+          <button type="submit">Register & Generate UNIC Number</button>
+        </form>
+        <p id="registrationMessage" class="message"></p>
+      </section>
+
+      <section id="loginSection" class="card hidden">
+        <h2>Login</h2>
+        <form id="loginForm">
+          <label>
+            UNIC Number
+            <input type="text" id="loginUnic" required />
+          </label>
+          <label>
+            Password
+            <input type="password" id="loginPassword" required />
+          </label>
+          <button type="submit">Login</button>
+        </form>
+        <p id="loginMessage" class="message"></p>
+      </section>
+
+      <section id="dashboardSection" class="hidden">
+        <nav class="tabs">
+          <button class="tab-btn active" data-tab="homeTab">Home</button>
+          <button class="tab-btn" data-tab="updateTab">Update Personal Details</button>
+          <button class="tab-btn" data-tab="uploadTab">Upload Documents</button>
+          <button id="logoutBtn" class="logout">Log Out</button>
+        </nav>
+
+        <article id="homeTab" class="tab-content card active">
+          <h3>Welcome to Your Locker</h3>
+          <p><strong>UNIC Number:</strong> <span id="displayUnic"></span></p>
+          <p><strong>Name:</strong> <span id="displayName"></span></p>
+          <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+          <p><strong>Phone:</strong> <span id="displayPhone"></span></p>
+          <p>Use tabs to update profile or upload documents.</p>
+        </article>
+
+        <article id="updateTab" class="tab-content card">
+          <h3>Update Personal Details</h3>
+          <form id="updateForm" class="grid">
+            <label>
+              Full Name
+              <input type="text" id="updateName" required />
+            </label>
+            <label>
+              Email
+              <input type="email" id="updateEmail" required />
+            </label>
+            <label>
+              Phone Number
+              <input type="tel" id="updatePhone" pattern="[0-9]{10}" required />
+            </label>
+            <label>
+              Address
+              <input type="text" id="updateAddress" required />
+            </label>
+            <button type="submit">Save Details</button>
+          </form>
+          <p id="updateMessage" class="message"></p>
+        </article>
+
+        <article id="uploadTab" class="tab-content card">
+          <h3>Upload Documents</h3>
+          <form id="uploadForm" class="grid">
+            <label>
+              Aadhaar Card
+              <input type="file" id="aadhaar" accept=".pdf,.jpg,.jpeg,.png" />
+            </label>
+            <label>
+              10th Certificate
+              <input type="file" id="cert10" accept=".pdf,.jpg,.jpeg,.png" />
+            </label>
+            <label>
+              12th Certificate
+              <input type="file" id="cert12" accept=".pdf,.jpg,.jpeg,.png" />
+            </label>
+            <label>
+              Other Documents
+              <input type="file" id="otherDocs" accept=".pdf,.jpg,.jpeg,.png" multiple />
+            </label>
+            <button type="submit">Save Uploaded Document Names</button>
+          </form>
+          <h4>Uploaded List</h4>
+          <ul id="documentList"></ul>
+          <p class="small-note">
+            Demo behavior: files are not sent to a server. Only file names are stored in your browser.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
